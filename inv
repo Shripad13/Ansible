@@ -3,8 +3,12 @@
 
 [backend]
 172.31.23.32
+<<<<<<< HEAD
 
 [dev]
 
 [prod]
 
+=======
+172.31.23.31
+>>>>>>> 7efa8f0 (ansible update)
