@@ -1,7 +1,10 @@
+[frontend]
+172.31.23.212
+
+[backend]
+172.31.23.32
+
 [dev]
 
 [prod]
 
-[frontend]
-
-[backend]
