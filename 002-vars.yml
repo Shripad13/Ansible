@@ -31,3 +31,4 @@
 #COMMAND -  ansible-playbook -i /home/ec2-user/Ansible/inv -e ansible_user=ec2-user -e ansible_password=DevOps321 -e CLI_URL=flipkart.com 002-vars.yml
 # CLI variable >> task variable >> play variable
 # CLI variable will always have highest precedence.
+# ex-  ansible-playbook -i /home/ec2-user/Ansible/inv -e ansible_user=ec2-user -e ansible_password=DevOps321 -e CLI_URL=flipkart.com -e URL=devsecopswithshri.com  002-vars.yml
