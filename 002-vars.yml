@@ -3,15 +3,15 @@
   vars:                             #play level variable
     URL: "play.google.com"
   tasks:
-    - name: Print/Display a message using a variable
+    - name: Print/Display a message using a variable (Task1)
       ansible.builtin.debug:
-        msg: "value of the URL {{ URL }}"
+        msg: "value of the URL is {{ URL }}"
       
-    - name: Print/Display a message using a variable
+    - name: Print/Display a message using a variable (Task2)
       ansible.builtin.debug:
         msg: "{{ URL }}"             # always enclose in quotes if not any prefix for variables
 
-    - name: Print/Display a message using a variable
+    - name: Print/Display a message using a variable (Task3)
       ansible.builtin.debug:
         msg: "valueof the task variable is {{ URL }}" 
       vars:                              # task level variable

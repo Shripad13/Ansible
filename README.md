@@ -71,6 +71,9 @@ In Ansible, what is Playbook ?
 
 PLAYBOOK>>PLAY>>TASK>>ACTIONS
 
+# IMP Points
+One play should not have same name of two tasks
+
 # Ansible Push Vs Pull 
 Push - Use when Infra is Static
 Pull - Use when Infra is Dynamic
@@ -144,13 +147,3 @@ roles/
     fooapp/               # ""
 
 
-
-
-✅ state: present  #means:"Make sure the package is installed."
-If the package is already installed, Ansible does nothing (it's idempotent). If it's not installed, Ansible will install it.
-✅state: absent   #Ensure the package is removed/uninstalled.
-✅state: latest   #Ensure the latest version of the package is installed.
-
-state: started        #Ensures the service is running.
-enabled: yes          #Configures the service to start automatically on boot.
-become: yes           #Instructs Ansible to escalate privileges (e.g., using sudo) for executing tasks.
