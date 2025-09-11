@@ -79,7 +79,7 @@ Ansible Tower - GUI for Ansible & it has feature of getting the inventory dynami
 
 
  ### How to run an ansible playbook?
- ansible -playbook -i inv -e ansible_user=ec2-user -e ansible_password=DevOps321 playBookname.yml
+ansible-playbook -i inv -e ansible_user=ec2-user -e ansible_password=DevOps321 001-playbook.yml
 
 
 ## Variable Precednce in variable
