@@ -14,4 +14,7 @@
   tasks:
     - name: task1 of play2
       ansible.builtin.debug:
-        msg: "Ansible is an awesome configuration management automation tool!"    
+        msg: "Ansible is an awesome configuration management automation tool!"
+    - name: task2 of play2
+      ansible.builtin.debug:
+        msg: "Ansible is very helpful!"  
