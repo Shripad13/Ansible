@@ -73,6 +73,8 @@ PLAYBOOK>>PLAY>>TASK>>ACTIONS
 
 # IMP Points
 One play should not have same name of two tasks
+If you attempt to use a variable that is not decalred then particular task accessing the variable will fail.
+
 
 # Ansible Push Vs Pull 
 Push - Use when Infra is Static
