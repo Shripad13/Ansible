@@ -9,8 +9,8 @@
     - name: Print all the details of the command execution
       ansible.builtin.debug:          # debug module is used to print/display a message
         var: OUT                      # print all the details of the command execution using the registered variable OUT, var is a predefined keyword in Ansible to print the value of a variable.
-        msg: {{OUT}}
-        
+        msg: "{{OUT}}"                # you can also use msg to print the value of a variable.
+
     - name: Printing uptime command
       ansible.builtin.debug:          # debug module is used to print/display a message
         msg: "Uptime of the system is {{ OUT.stdout }} and the exit code is {{ OUT.rc }}"  # print the output of the command using the registered variable OUT, rc is the return code of the command, 0 means success and any other value means failure.
