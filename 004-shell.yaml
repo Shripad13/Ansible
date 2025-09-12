@@ -9,7 +9,11 @@
     - name: Print all the details of the command execution
       ansible.builtin.debug:          # debug module is used to print/display a message
         var: OUT                      # print all the details of the command execution using the registered variable OUT, var is a predefined keyword in Ansible to print the value of a variable.
-        msg: "{{OUT}}"                # you can also use msg to print the value of a variable.
+        #msg: "{{OUT}}"                # you can also use msg to print the value of a variable.
+
+
+
+#In Ansible's debug module, msg and var are mutually exclusive parameters. You can't use them together in the same task. You need to choose one.
 
     - name: Printing uptime command
       ansible.builtin.debug:          # debug module is used to print/display a message
