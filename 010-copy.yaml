@@ -4,7 +4,7 @@
   tasks:
     - name: Copying nginx file
       ansible.builtin.copy:         # copy module is used to copy files from local to remote node
-        src: nginx.conf
+        src: /home/ec2-user/Ansible/nginx.conf
         dest: /home/ec2-user/nginx.conf
         owner: root
         group: root
