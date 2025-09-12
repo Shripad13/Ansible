@@ -6,6 +6,6 @@
       ansible.builtin.copy:         # copy module is used to copy files from local to remote node
         src: /home/ec2-user/Ansible/nginx.conf
         dest: /home/ec2-user/nginx.conf
-        owner: root
-        group: root
+        #owner: root
+        #group: root
         mode: '0644'  # Permissions in octal format
