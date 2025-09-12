@@ -1,7 +1,7 @@
 - name: Demo on tasks
   hosts: all                       # hosts group name
   gather_facts: no                 # disable gathering facts, it is enabled by default, it will collect system information like OS, CPU, Memory, etc. which is not required in this playbook.
-  #become: yes                      # Runs the task with sudo/root , called as previlige escalation
+  become: yes                      # Runs the task with sudo/root , called as previlige escalation
   #become_user: admin               # Runs the task with specified user, here it will run with admin user
   tasks:
     - name: Installing nginx
