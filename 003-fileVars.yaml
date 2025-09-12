@@ -16,5 +16,6 @@
 
 
 #Command - $  ansible-playbook -i inv -e ansible_user=ec2-user -e ansible_password=DevOps321  -e @prod-vars.yaml 003-fileVars.yaml
-# $ ansible-playbook -i inv -e ansible_user=ec2-user -e ansible_password=DevOps321 -e env=dev  003-fileVars.yam
+# -e@prod-vars.yml ---> It will load all the variables from prod-vars.yaml file
+# $ ansible-playbook -i inv -e ansible_user=ec2-user -e ansible_password=DevOps321 -e env=dev  003-fileVars.yaml
 
