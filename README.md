@@ -112,10 +112,19 @@ Types of facts gathers - OS details, Network interfaces, Memoory & CPU info, Dis
 Ansible is very rich with collections.
 
 By default gather_facts is yes in all playbooks, if you dont want to gather_facts then mention as no.
+Make sure all group is there in inv file.
+
 ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.builtin.gather_facts
 
 Also you can search particualr info by using grep
-ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.builtin.gather_facts|grep 
+ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.builtin.gather_facts|grep "ansible_nodename"
+
+ansible -i inv frontend -e ansible_user=ec2-user -e ansible_password=DevOps321  -m ansible.builtin.gather_facts
+$ ansible -i inv frontend -e ansible_user=ec2-user -e ansible_password=DevOps321  -m ansible.builtin.gather_facts|grep nameservers
+
+$ ansible -i inv frontend -e ansible_user=ec2-user -e ansible_password=DevOps321  -m ansible.builtin.gather_facts|grep "ansible_nodename"
+
+$ ansible -i inv frontend -e ansible_user=ec2-user -e ansible_password=DevOps321  -m ansible.builtin.gather_facts|grep "ansible_kernel"
 
 You can redirect the output to some file, becoz it generated hug info of facts
 ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.builtin.gather_facts > ~/op.txt

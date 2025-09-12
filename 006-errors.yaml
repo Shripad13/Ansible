@@ -4,7 +4,7 @@
   tasks:
     - name: Check if Java process running or not
       ansible.builtin.shell: ps -ef | grep java | grep -v grep
-      ignore_errors: True          # ignore_errors is a predefined keyword in Ansible to ignore the errors of a task, if the task fails, it will not stop the playbook execution.
+      #ignore_errors: True          # ignore_errors is a predefined keyword in Ansible to ignore the errors of a task, if the task fails, it will not stop the playbook execution.
     - name: Printing a msg:
       ansible.builtin.debug:
         msg: "This is a second task" 

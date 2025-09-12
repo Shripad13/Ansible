@@ -14,3 +14,6 @@
       ansible.builtin.debug:
         msg: "Current environment is {{ ENV }} & the dev-lead name is {{ DEVLEAD }} their value is {{ A }}"             
 
+
+#Command - ansible-playbook -i inv -e ansible_user=ec2-user -e ansible_password=DevOps321  -e env=Prod -e ENV=Production -e DEVLEAD=Shripad -e A=Classic 003-fileVars.yaml
+
