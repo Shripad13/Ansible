@@ -109,8 +109,16 @@ Gathering facts refers to the automatic collection of system information/propert
 
 Types of facts gathers - OS details, Network interfaces, Memoory & CPU info, Disk & mounts etc
 
+Ansible is very rich with collections.
+
 By default gather_facts is yes in all playbooks, if you dont want to gather_facts then mention as no.
- ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.builtin.gather_facts
+ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.builtin.gather_facts
+
+Also you can search particualr info by using grep
+ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.builtin.gather_facts|grep 
+
+You can redirect the output to some file, becoz it generated hug info of facts
+ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.builtin.gather_facts > ~/op.txt
 
 
 
