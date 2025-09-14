@@ -1,0 +1,61 @@
+- name: Configuring hostname
+  ansible.builtin.shell: set-hostname {{ COMPONENT }}
+
+- name: disabling the default module nodejs version
+  ansible.builtin.shell: dnf module disable nodejs -y
+
+- name: Enabling the module nodejs version 20
+  ansible.builtin.shell: dnf module enable nodejs:20 -y
+
+- name: Installing nodejs 
+  ansible.builtin.package:
+    name: nodejs
+    state: present
+
+- name: Add application user on remote backend mysql-server
+  ansible.builtin.user:
+    name: expense
+    state: present
+    shell: /bin/bash
+
+- name: Create a directory
+  ansible.builtin.file:
+    path: /app
+    owner: expense
+    group: expense
+    mode: '0755'
+    state: directory
+
+- name: Cleanup the file
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+
+- name: Downloading & unarchiving the frontend Code
+  ansible.builtin.unarchive:
+    src: "https://expense-web-app.s3.amazonaws.com/backend.zip"
+    dest: /app
+    remote_src: yes
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: backend.service
+    dest: /etc/systemd/system/backend.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Install npm packages
+  community.general.npm:
+    path: /app
+    state: latest
+
+- name: Inject the mysql
+  ansible.builtin.shell: mysql -h 172.31.23.32 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+
+
+- name: Starting {{COMPONENT}} service
+  ansible.builtin.systemd_service:
+    name: backend
+    state: restarted
+    enabled: true
+    daemon_reload: yes

@@ -17,6 +17,9 @@ ansible.builtin.systemd_service - also daemon reload module, Preferred for syste
 
 ansible.builtin.fetch module – Fetch files from remote nodes
 
+
+ansible.builtin.user module – Manage user accounts
+
 ✅ state: present  #means:"Make sure the package is installed."
 If the package is already installed, Ansible does nothing (it's idempotent). If it's not installed, Ansible will install it.
 ✅state: absent   #Ensure the package is removed/uninstalled.

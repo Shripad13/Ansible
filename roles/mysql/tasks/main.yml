@@ -1,18 +1,25 @@
 - name: Configuring hostname
   ansible.builtin.shell: set-hostname {{ COMPONENT }}
 
+- name: Configuring hostname
+  ansible.builtin.shell: set-hostname {{ COMPONENT }}
+
+- name: Configuring hostname
+  ansible.builtin.shell: set-hostname {{ COMPONENT }}
+
+
 - name: Install mysql
   ansible.builtin.package:
     name: mysql-server
     state: present
 
-- name: Starting mysqld service
+- name: Starting mysql service
   ansible.builtin.service:
     name: mysqld
     state: started
     enabled: true
 
-- name: Create a directory
+- name: Inject the mysql
   ansible.builtin.shell: mysql_secure_installation --set-root-pass ExpenseApp@1
 
 
