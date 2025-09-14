@@ -1,5 +1,5 @@
-- name: Expense Playbook To Configure {{ component }}
-  hosts: "{{ component }}"
+- name: Expense Playbook To Configure {{ COMPONENT }}
+  hosts: "{{ COMPONENT }}"
   become: true
   roles:
-    - "{{ component }}"
+    - "{{ COMPONENT }}"
