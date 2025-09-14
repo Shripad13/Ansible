@@ -33,4 +33,3 @@
     name: nginx
     state: started
     enabled: true
-    become: true
