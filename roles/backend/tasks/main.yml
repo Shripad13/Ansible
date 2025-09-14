@@ -46,9 +46,9 @@
     path: /app
     state: latest
 
-- name: Starting mysql service
-  ansible.builtin.service:
-    name: mysqld
+- name: Installing mysql-server service
+  ansible.builtin.dnf:
+    name: mysql-server
     state: present
 
 - name: Inject the mysql
