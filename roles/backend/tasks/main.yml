@@ -46,9 +46,14 @@
     path: /app
     state: latest
 
+- name: Starting mysql service
+  ansible.builtin.service:
+    name: mysqld
+    state: started
+    enabled: true
+
 - name: Inject the mysql
   ansible.builtin.shell: mysql -h 172.31.23.32 -uroot -pExpenseApp@1 < /app/schema/backend.sql
-
 
 - name: Starting {{COMPONENT}} service
   ansible.builtin.systemd_service:
