@@ -14,11 +14,11 @@
 
 - name: Cleanup the file
   ansible.builtin.file:
-    path: /usr/share/nginx/html/*
+    path: /usr/share/nginx/html
 
 - name: Create a directory
   ansible.builtin.file:
-    path: /usr/share/nginx/html/
+    path: /usr/share/nginx/html
     state: directory
 
 - name: Downloading & unarchiving the frontend Code
