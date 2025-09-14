@@ -136,9 +136,16 @@ ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.bui
 # Run Below command to get plain pass into encrypted pass
 ansible-vault encrypt_string password
 
+# Problem Statement -
+1. If we use playbooks directly, we never have any idea on which file is been used by which playbook.
+2. You never know which variable file is used by which playbook.
+3. you cannot resuse the code.
+
+This is where Ansible roles comes into play !!
 
 # Ansible Roles 
-
+(Usage of this is close to what use see prod approach)
+File name extension should be .yml not a .yaml
 
 
 roles/
