@@ -5,7 +5,7 @@
   ansible.builtin.package:
     name: nginx
     state: present
-    become: yes
+
 
 - name: Copy file with owner and permissions
   ansible.builtin.copy:
