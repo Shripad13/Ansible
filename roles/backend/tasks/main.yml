@@ -26,9 +26,6 @@
     mode: '0755'
     state: directory
 
-- name: Cleanup the file
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
 
 - name: Downloading & unarchiving the frontend Code
   ansible.builtin.unarchive:
