@@ -174,3 +174,6 @@ roles/
     fooapp/               # ""
 
 
+# Copy vs Template module
+1. Copy module just copy-paste from local to remote machine (you cannnot parameterize the file).
+2. Of you use template collection, you can use it for copy-paste & parameterized files.
