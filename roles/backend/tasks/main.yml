@@ -18,24 +18,6 @@
     state: present
     shell: /bin/bash
 
-- name: Create a App directory
-  ansible.builtin.file:
-    path: "{{ APP_PATH }}"
-    owner: expense
-    group: expense
-    mode: '0755'
-    state: directory
-
-- name: Cleanup the App directory
-  ansible.builtin.file:
-    path: "{{ APP_PATH }}"
-    state: absent
-
-- name: Downloading & unarchiving the "{{COMPONENT}}-{{ENV}}" Code
-  ansible.builtin.unarchive:
-    src: "{{ URL }}"
-    dest: "{{ APP_PATH }}"
-    remote_src: yes
 
 - name: Copy file with owner and permissions
   ansible.builtin.template:
