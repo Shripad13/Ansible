@@ -1,5 +1,5 @@
 - name: Configuring hostname
-  ansible.builtin.shell: set-hostname {{ COMPONENT }}
+  ansible.builtin.shell: set-hostname "{{COMPONENT}}-{{ENV}}"
 
 - name: disabling the default module nodejs version
   ansible.builtin.shell: dnf module disable nodejs -y
@@ -31,9 +31,9 @@
     path: "{{ APP_PATH }}"
     state: absent
 
-- name: Downloading & unarchiving the {{ COMPONENT }} Code
+- name: Downloading & unarchiving the "{{COMPONENT}}-{{ENV}}" Code
   ansible.builtin.unarchive:
-    src: "https://expense-web-app.s3.amazonaws.com/backend.zip"
+    src: "{{ URL }}"
     dest: "{{ APP_PATH }}"
     remote_src: yes
 
@@ -58,7 +58,7 @@
 - name: Inject the mysql
   ansible.builtin.shell: mysql -h 172.31.23.32 -uroot -pExpenseApp@1 < /app/schema/backend.sql
 
-- name: Starting {{COMPONENT}} service
+- name: Starting "{{COMPONENT}}-{{ENV}}" service
   ansible.builtin.systemd_service:
     name: backend
     state: restarted

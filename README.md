@@ -177,3 +177,10 @@ roles/
 # Copy vs Template module
 1. Copy module just copy-paste from local to remote machine (you cannnot parameterize the file).
 2. Of you use template collection, you can use it for copy-paste & parameterized files.
+
+
+# Regarding Roles & Calling a role -
+1. When you call a specific role, tasks mentioned in the main.yml will be executed.
+2. We can also define a task in another file tasks/anything.yml & can import the task that are available in anything.yml
+
+

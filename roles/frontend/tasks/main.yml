@@ -1,5 +1,5 @@
 - name: Configuring hostname
-  ansible.builtin.shell: set-hostname {{ COMPONENT }}
+  ansible.builtin.shell: set-hostname "{{COMPONENT}}-{{ENV}}"
 
 - name: Install nginx
   ansible.builtin.package:
@@ -8,23 +8,23 @@
 
 
 - name: Copy file with owner and permissions
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: nginx.conf
     dest: /etc/nginx/default.d/nginx.conf
 
-- name: Cleanup the file
+- name: Cleanup the App Directory
   ansible.builtin.file:
-    path: /usr/share/nginx/html
+    path: "{{APP_PATH}}"
 
-- name: Create a directory
+- name: Create a App Directory
   ansible.builtin.file:
-    path: /usr/share/nginx/html
+    path: "{{APP_PATH}}"
     state: directory
 
-- name: Downloading & unarchiving the frontend Code
+- name: Downloading & unarchiving the "{{COMPONENT}}" Code
   ansible.builtin.unarchive:
-    src: "https://expense-web-app.s3.amazonaws.com/frontend.zip"
-    dest: /usr/share/nginx/html/
+    src: "{{ URL }}"
+    dest: "{{APP_PATH}}"
     remote_src: yes
 
 
