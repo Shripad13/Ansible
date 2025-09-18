@@ -1,14 +1,10 @@
 [frontend]
-172.31.23.212
+frontend.devsecopswithshri.site
 
 [mysql]
-172.31.23.32
+mysql-dev.devsecopswithshri.site
 
 [backend]
-172.31.25.238
-
-[dev]
-
-[prod]
+backend.devsecopswithshri.site
 
 # ansible-playook -i inv-dev -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=backend -e ENV=DEV expense.yml
