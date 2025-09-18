@@ -39,13 +39,18 @@
     recurse: yes
     mode: '0755'
 
+- name: Check if package-lock.json exists
+  ansible.builtin.stat:
+    path: "{{ APP_PATH }}/package-lock.json"
+  register: lockfile_stat
+
 - name: Ensure package-lock.json is writable by expense
   ansible.builtin.file:
     path: "{{ APP_PATH }}/package-lock.json"
     owner: expense
     group: expense
     mode: '0644'
-  when: ansible.builtin.stat(path="{{ APP_PATH }}/package-lock.json").stat.exists
+  when: lockfile_stat.stat.exists
 
 - name: Install npm packages
   community.general.npm:
