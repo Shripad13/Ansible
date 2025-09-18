@@ -42,7 +42,7 @@
     state: present
 
 - name: Inject the mysql
-  ansible.builtin.shell: mysql -h 172.31.23.32 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+  ansible.builtin.shell: mysql -h mysql-dev.devsecopswithshri.site -uroot -pExpenseApp@1 < /app/schema/backend.sql
 
 - name: Starting "{{COMPONENT}}-{{ENV}}" service
   ansible.builtin.systemd_service:
