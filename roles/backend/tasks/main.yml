@@ -34,9 +34,7 @@
 - name: Install npm packages
   community.general.npm:
     path: "{{ APP_PATH }}"
-  become_user: expense
-  chmod: '0755'
-  chown: expense:expense
+  become_user: yes
 
 - name: Installing mysql-server service
   ansible.builtin.package:
