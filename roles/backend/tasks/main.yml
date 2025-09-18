@@ -34,7 +34,9 @@
 - name: Install npm packages
   community.general.npm:
     path: "{{ APP_PATH }}"
-  become_user: yes
+  owner: expense
+  group: expense
+  recurse: yes
 
 - name: Installing mysql-server service
   ansible.builtin.package:
