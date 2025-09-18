@@ -31,6 +31,14 @@
     group: root
     mode: '0644'
 
+- name: Ensure app directory is owned by expense
+  ansible.builtin.file:
+    path: "{{ APP_PATH }}"
+    owner: expense
+    group: expense
+    recurse: yes
+    mode: '0755'
+
 - name: Ensure package-lock.json is writable by expense
   ansible.builtin.file:
     path: "{{ APP_PATH }}/package-lock.json"
