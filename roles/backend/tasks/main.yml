@@ -31,13 +31,18 @@
     group: root
     mode: '0644'
 
+- name: Ensure package-lock.json is writable by expense
+  ansible.builtin.file:
+    path: "{{ APP_PATH }}/package-lock.json"
+    owner: expense
+    group: expense
+    mode: '0644'
+  when: ansible.builtin.stat(path="{{ APP_PATH }}/package-lock.json").stat.exists
+
 - name: Install npm packages
   community.general.npm:
     path: "{{ APP_PATH }}"
-  owner: expense
-  group: expense
-  recurse: yes
-  chmod: '0644'
+  become_user: expense
 
 - name: Installing mysql-server service
   ansible.builtin.package:
