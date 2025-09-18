@@ -37,6 +37,7 @@
   owner: expense
   group: expense
   recurse: yes
+  chmod: '0644'
 
 - name: Installing mysql-server service
   ansible.builtin.package:
