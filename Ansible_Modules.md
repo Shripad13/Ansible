@@ -36,3 +36,12 @@ remote_src: yes       #Means things will happen to remote servers (manadatory to
 
 ignore_errors: True          # ignore_errors is a predefined keyword in Ansible to ignore the errors of a task, if the task fails, it will not stop the playbook execution.
 
+
+
+###############################
+# How to call a common yml file to the main.yml file with ansible.builtin.include_role collection
+
+- name: App Pre-requisite Tasks
+  ansible.builtin.include_role:           # through this we can call any role inside another role
+    name: common                          # Name of the role to be called
+    tasks_from: pre-req.yml               # Name of the file to be called inside the role

@@ -183,4 +183,43 @@ roles/
 1. When you call a specific role, tasks mentioned in the main.yml will be executed.
 2. We can also define a task in another file tasks/anything.yml & can import the task that are available in anything.yml
 
+# what is Role Dependency in Ansible ?
+1. This helps in making one particualr task as pre-requisite
 
+For example, Running a Backend first without making Mysql operation doesnt work.
+So we can define role dependency for BACKEND as MySQL, that means you wish to run backend, MySQL will be executed first.
+
+It is mentioned here on common/mian.yml & this needs to be called in backend/meta/main.yml file, so that automatically it will be executed first.
+
+
+## Running Playbook using PUSH Mechanism
+
+
+ansible-playbook -i inv-dev -e ansible_username=ec2-user -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev expense.yml
+
+OR
+
+ansible-playbook -i frontend-dev.expense.internal -e ansible_username=ec2-user -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev expense.yml
+
+
+### Ansible PULL Mechanism
+
+Ansible also works using pull based mechanism, in this case we dont have to maintain the inventory.
+But ensure the node that runs this ansible-pull should have ANSIBLE installed.
+
+## When to use PUSH Vs PULL 
+
+Typically its a choice, but generally if the inventory is STATIC, then we designate one of the node as Ansible Controller where we make the deployments from here using PUSH to other nodes.
+
+If the inventory is the DYNAMIC (where Infra scales up & down dynamically) in that case we end up using ANSIBLE_PULL , but the pre-requisite is that the node running ansible-pull should have ansible installed.
+Also in ansible-pull, you DONT necessarily to maintain inventory.
+
+you can still maintain inventory file as below -
+filename-pull.yml & need to mention localhost for hosts 
+hosts: localhost
+
+Also you need to pull the code ONLY from Github & git related products like Git, Gitlab, Bigbucket
+
+COMMAND to run on target node directly - ansible-pull -U <git url repo> -e COMPONENT=frontend -e ENV=dev expense.yml
+
+Where you want to do configuration management on server, run the ansible command there itself as simple as that.
