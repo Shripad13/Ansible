@@ -30,11 +30,6 @@
 
 
 
-- name: Generating npm modules
-  community.general.npm:
-    path: "{{APP_PATH}}"
-
-
 - name: Installing mysql-server client
   ansible.builtin.dnf:
     name: mysql
@@ -46,6 +41,10 @@
       - PyMySQL
       - cryptography                             # Dependency packages for community.mysql.mysql_db
     executable: pip3.11 
+
+- name: Generating npm modules
+  community.general.npm:
+    path: "{{ APP_PATH }}"
 
 - name: Inject /Load the mysql schema
   community.mysql.mysql_db:
