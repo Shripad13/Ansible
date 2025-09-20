@@ -28,20 +28,11 @@
 #    name: common                          # Name of the role to be called
 #    tasks_from: pre-req               # Name of the file to be called inside the role
 
-- name: Cleanup the App Directory
-  ansible.builtin.file:
-    path: "{{APP_PATH}}"
+- name: App Pre-requisite Tasks 
+  ansible.builtin.include_role:         
+    name: common                         
+    tasks_from: pre-req
 
-- name: Create a App Directory
-  ansible.builtin.file:
-    path: "{{APP_PATH}}"
-    state: directory
-
-- name: Downloading & unarchiving the "{{COMPONENT}}" Code
-  ansible.builtin.unarchive:
-    src: "{{ URL }}"
-    dest: "{{APP_PATH}}"
-    remote_src: yes
 
 
 - name: Installing mysql-server client
