@@ -15,7 +15,6 @@
     tasks_from: pre-req.yml               # Name of the file to be called inside the role
 
 
-
 - name: Restarting nginx service
   ansible.builtin.service:
     name: nginx
