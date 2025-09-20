@@ -18,18 +18,15 @@
     state: present
 
 
-- name: App Pre-requisite Tasks
-  ansible.builtin.include_role:           # through this we can call any role inside another role
-    name: common                          # Name of the role to be called
-    tasks_from: pre-req.yml               # Name of the file to be called inside the role
-
-- name: Copy file with owner and permissions
+- name: Copying {{COMPONENT}} systemd file
   ansible.builtin.template:
     src: backend.service
     dest: /etc/systemd/system/{{COMPONENT}}.service
-    owner: root
-    group: root
-    mode: '0644'
+
+- name: App Pre-requisite Tasks
+  ansible.builtin.include_role:           # through this we can call any role inside another role
+    name: common                          # Name of the role to be called
+    tasks_from: pre-req               # Name of the file to be called inside the role
 
 
 
@@ -41,7 +38,7 @@
 - name: Installing mysql-server client
   ansible.builtin.dnf:
     name: mysql
-    state: installed
+    state: present
 
 - name: Install Pre-req packages for mysql_db
   ansible.builtin.pip:
