@@ -1,3 +1,6 @@
+- name: Configuring hostname
+  ansible.builtin.shell: set-hostname {{ COMPONENT }}-{{ ENV }}
+  
 - name: disabling the default module nodejs version
   ansible.builtin.shell: dnf module disable nodejs -y
 
@@ -9,7 +12,7 @@
     name: nodejs
     state: present
 
-- name: Add application user on remote backend mysql-server
+- name: Add application user on remote {{ COMPONENT }} mysql-server
   ansible.builtin.user:
     name: expense
     state: present
@@ -30,9 +33,9 @@
 
 
 
-- name: Installing npm modules
+- name: Generating npm modules
   community.general.npm:
-    path: "{{ APP_PATH }}"
+    path: "{{APP_PATH}}"
 
 
 - name: Installing mysql-server client
