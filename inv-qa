@@ -1,13 +1,8 @@
 [frontend]
-172.31.23.212
+frontend-qa.devsecopswithshri.site
 
 [mysql]
-172.31.23.32
+mysql-qa.devsecopswithshri.site
 
 [backend]
-172.31.25.238
-
-[dev]
-
-[prod]
-
+backend-qa.devsecopswithshri.site

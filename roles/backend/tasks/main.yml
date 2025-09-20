@@ -13,7 +13,7 @@
   ansible.builtin.user:
     name: expense
     state: present
-    shell: /bin/bash
+
 
 - name: App Pre-requisite Tasks
   ansible.builtin.include_role:           # through this we can call any role inside another role
@@ -55,13 +55,13 @@
     login_user: root
     login_password: ExpenseApp@1
     #login_password: "{{PWD}}"
-    login_host: mysql-dev.devsecopswithshri.site
+    login_host: mysql-{{ENV}}.devsecopswithshri.site
 
 
 
 - name: ReStarting "{{COMPONENT}}-{{ENV}}" service
   ansible.builtin.systemd_service:
-    name: backend
+    name: {{COMPONENT}}
     state: restarted
     enabled: true
     daemon_reload: yes
