@@ -12,7 +12,7 @@
 - name: App Pre-requisite Tasks
   ansible.builtin.include_role:           # through this we can call any role inside another role
     name: common                          # Name of the role to be called
-    tasks_from: pre-req.yml               # Name of the file to be called inside the role
+    tasks_from: pre-req                   # Name of the file to be called inside the role
 
 
 - name: Restarting nginx service
