@@ -1,5 +1,7 @@
 - name: Printing secrets
-  hosts: all                        # hosts group name 
+  hosts: all  
+  vars_files:
+    - secrets.yml                      # hosts group name 
   tasks:
     - name: Show DB password
       ansible.builtin.debug:
