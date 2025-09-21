@@ -8,9 +8,9 @@
         msg: "value of the  pass is {{ DBPASS }}"  # print the DB password using the variable DBPASS, which is defined in the vars section.
       #no_log: true  # This will prevent the sensitive information from being logged in the output.
       
-    #- name: Printing secret file content
-      #ansible.builtin.debug:
-        #msg: "{{ lookup('file', 'secret.txt') }}"  # Using lookup to read the content of a file named secret.txt.
+    - name: Printing secret file content
+      ansible.builtin.debug:
+        msg: "{{ lookup('file', 'secret.yml') }}"  # Using lookup to read the content of a file named secret.yml.
       #no_log: true  # This will prevent the sensitive information from being logged in the output.
 
 
@@ -22,4 +22,3 @@
 
 # Command to run the vault file -
 # ansible-playbook -i localhost, -e ansible_user=ec2-user -e ansible_password=DevOps321 011-vault.yaml --ask-vault-password
-
