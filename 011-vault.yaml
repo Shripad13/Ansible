@@ -1,7 +1,15 @@
 - name: Printing secrets
   hosts: all                        # hosts group name
   vars:
-    DBPASS: "DevOps123"             # Encrypt & mention here
+    DBPASS: !vault |
+                    $ANSIBLE_VAULT;1.1;AES256
+                    64643933333862613335343831643836346639353365656266356635333934353335386337386563
+                    3334316430303933363133643333663038343237623562330a326431646634393063336564643664
+                    31343238373637353561666664656631653563616135343932363230613565646666373465346261
+                    3137313064396161380a653032306263393034376636626261666561386264383763343531623962
+                    3962  
+    #DBPASS: "DevOps123"             # Encrypt & mention here
+
   tasks:
     - name: Printing Secrets
       ansible.builtin.debug:
@@ -14,7 +22,12 @@
       no_log: true  # This will prevent the sensitive information from being logged in the output.
 
 
-
+# ansible-vault encrypt_string 'DevOps123' --name 'DBPASS'  # To encrypt a single variable
 # ansible-vault encrypt secret.txt  # To encrypt the file
 # ansible-vault decrypt secret.txt  # To decrypt the file
 # Ansible vault is to encrypt sensitive data like passwords, API keys, etc., within Ansible playbooks or files.
+
+
+# Command to run the vault file -
+# ansible-playbook -i localhost, -e ansible_user=ec2-user -e ansible_password=DevOps321 011-vault.yaml --ask-vault-password
+
