@@ -1,17 +1,7 @@
 - name: Printing secrets
-  hosts: all                        # hosts group name
-  vars:
-    DBPASS: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          31386461383666323130623431393734626434363832353762356662643634616136346532313162
-          3662626166643063363761393834663439396538626365340a323963653064326439363961633865
-          32663665333638376666376165333737373633396230373334656437343435383230653039633366
-          3362316663633563630a396365346438313832356536323763616136306163383232326334646531
-          3236  
-    #DBPASS: "DevOps123"             # Encrypt & mention here
-
+  hosts: all                        # hosts group name 
   tasks:
-    - name: Printing Secrets
+    - name: Show DB password
       ansible.builtin.debug:
         msg: "value of the  pass is {{ DBPASS }}"  # print the DB password using the variable DBPASS, which is defined in the vars section.
       #no_log: true  # This will prevent the sensitive information from being logged in the output.
