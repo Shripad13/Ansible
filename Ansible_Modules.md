@@ -22,6 +22,9 @@ ansible.builtin.user module – Manage user accounts
 
 ansible.builtin.dnf -
 
+
+ansible.builtin.stat - conditional check module
+
 ✅ state: present  #means:"Make sure the package is installed."
 If the package is already installed, Ansible does nothing (it's idempotent). If it's not installed, Ansible will install it.
 ✅state: absent   #Ensure the package is removed/uninstalled.
