@@ -81,7 +81,8 @@ You can even declare variables in file & defind in playbook.
 Push - Use when Infra is Static
 Pull - Use when Infra is Dynamic
 
-Ansible Tower - GUI for Ansible & it has feature of getting the inventory dynamically.
+# Ansible Tower - GUI for Ansible & it has feature of getting the inventory dynamically.
+
 
 
  ### How to run an ansible playbook?
@@ -133,8 +134,14 @@ ansible -i inv all -e ansible_user=ec2-user -e ansible_password=  -m ansible.bui
 
 
 
-# Run Below command to get plain pass into encrypted pass
-ansible-vault encrypt_string password
+# Ansible Vault
+Vault helps you in encrypting the string & supplying in a format thats not plain text.
+Ansible does not support defining !vault values directly inside playbooks this way. Vault-encrypted values are meant to be stored in separate variable files, not inline in the playbook YAML.
+
+Run Below command to get plain password intfrom encrypted pass
+$ ansible-vault encrypt_string <password>
+
+
 
 # Problem Statement -
 1. If we use playbooks directly, we never have any idea on which file is been used by which playbook.
@@ -223,3 +230,14 @@ Also you need to pull the code ONLY from Github & git related products like Git,
 COMMAND to run on target node directly - ansible-pull -U <git url repo> -e COMPONENT=frontend -e ENV=dev expense.yml
 
 Where you want to do configuration management on server, run the ansible command there itself as simple as that.
+
+
+# Ansible Tower-
+For all our jobs in Ansible, there is no UI so far.
+You can use Ansible Tower for UI, but tower can be useful only for ANsible.
+
+# Available Tools for Deployments- 
+
+1. Jenkins not really menat for purpose of deployments, Its main goal is CI.
+2. Go CD - Its a continuous deployment Tool.
+3. ArgoCD - Its a exclusively for Kubernetes deployments & dont work for server based deployments.

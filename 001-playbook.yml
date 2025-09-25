@@ -18,3 +18,5 @@
     - name: task2 of play2
       ansible.builtin.debug:
         msg: "Ansible is very helpful!"  
+
+# To run this playbook: ansible-playbook -i inventory_file_path playbook_file_path        
